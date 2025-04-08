@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import openai
 import os
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
+CORS(app)  # ✅ This allows your frontend to connect
 
 @app.route("/chat", methods=["POST"])
 def chat():
